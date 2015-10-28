@@ -21,6 +21,7 @@ create table Klient (
 [ID] [int] NOT NULL PRIMARY KEY IDENTITY(1,1),
 full_name					    varchar(255),
 email							varchar(255),
+user_password                   varchar(1000),
 [InsertDateTime] [datetime] NOT NULL CONSTRAINT "ConGetDate_Klient" DEFAULT GETDATE()
 );
 CREATE INDEX index_Klient_InsertDateTime ON Klient (InsertDateTime)
