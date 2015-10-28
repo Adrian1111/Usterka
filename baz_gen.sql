@@ -28,7 +28,7 @@ GO
 
 create table Zgloszenie (
 [ID] [int] NOT NULL PRIMARY KEY IDENTITY(1,1),
-pucharse_no					        char(10),
+defect_no					        char(10),
 client_id							int NOT NULL FOREIGN KEY REFERENCES Klient(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 [InsertDateTime] [datetime] NOT NULL CONSTRAINT "ConGetDate_Zgloszenie" DEFAULT GETDATE()
 );
@@ -44,15 +44,23 @@ GO
 
 create table Rodzaj_usterki (
 [ID] [int] NOT NULL PRIMARY KEY IDENTITY(1,1),
-pucharse_id					        int NOT NULL FOREIGN KEY REFERENCES Zgloszenie(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+defect_id					        int NOT NULL FOREIGN KEY REFERENCES Zgloszenie(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 category_id							int NOT NULL FOREIGN KEY REFERENCES Kategoria(ID) ON DELETE CASCADE ON UPDATE CASCADE,
 name                                varchar(255),
 descriptionOf                       varchar(1000),
 );
 GO
 
-
+create table Status_zgloszenia (
+[ID] [int] NOT NULL PRIMARY KEY IDENTITY(1,1),
+defect_id					        int NOT NULL FOREIGN KEY REFERENCES Zgloszenie(ID) ON DELETE CASCADE ON UPDATE CASCADE,
+statusOfCall                        varchar(255),
+dateOfFix                           datetime,
+);
+GO
 
 --------------------------------
 -- END OF TABLES
 ---------------------------------
+
+---brakujace slowniki: statusOfCall
