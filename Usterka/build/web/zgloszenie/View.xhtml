@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewZgloszenieTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewZgloszenieLabel_id}"/>
+                    <h:outputText value="#{zgloszenieController.selected.id}" title="#{bundle.ViewZgloszenieTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewZgloszenieLabel_defectNo}"/>
+                    <h:outputText value="#{zgloszenieController.selected.defectNo}" title="#{bundle.ViewZgloszenieTitle_defectNo}"/>
+                    <h:outputText value="#{bundle.ViewZgloszenieLabel_insertDateTime}"/>
+                    <h:outputText value="#{zgloszenieController.selected.insertDateTime}" title="#{bundle.ViewZgloszenieTitle_insertDateTime}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewZgloszenieLabel_clientId}"/>
+                    <h:outputText value="#{zgloszenieController.selected.clientId}" title="#{bundle.ViewZgloszenieTitle_clientId}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{zgloszenieController.destroyAndView}" value="#{bundle.ViewZgloszenieDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewZgloszenieEditLink}"/>
+                <br />
+                <h:commandLink action="#{zgloszenieController.prepareCreate}" value="#{bundle.ViewZgloszenieCreateLink}" />
+                <br />
+                <h:commandLink action="#{zgloszenieController.prepareList}" value="#{bundle.ViewZgloszenieShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewZgloszenieIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
