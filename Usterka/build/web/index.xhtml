@@ -5,9 +5,16 @@
     <h:head>
         <title>Facelet Title</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
+        <script src="libs/angular.min.js"></script>
     </h:head>
-    <h:body>
+    <body ng-app="mwsApp" id="body">
+        		<!--[if lt IE 7]>
+		<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+		your browser</a> to improve your experience.</p>
+		<![endif]-->
+        <div class="main-menu" ng-controller="mainMenuCtrl">
         Hello from Facelets
+        </div>
         <br />
         <h:link outcome="/kategoria/List" value="Show All Kategoria Items"/>
         <br />
@@ -18,7 +25,7 @@
         <h:link outcome="/statuszgloszenia/List" value="Show All Statuszgloszenia Items"/>
         <br />
         <h:link outcome="/zgloszenie/List" value="Show All Zgloszenie Items"/>
-    </h:body>
+    </body>
 
 
 

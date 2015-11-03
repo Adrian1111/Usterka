@@ -15,27 +15,34 @@ and open the template in the editor.
 <!--[if IE]><link rel="stylesheet" type="text/css" media="screen, projection" 
   href="http://www.blueprintcss.org/blueprint/ie.css"><![endif]-->
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-<script type="text/javascript" src="login.js"></script>
+<script src="libs/angular.min.js"></script>
+
+<script src="scripts/MainMenuCtrl.js"></script>
+
+
+
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
+        <div ng-app="myApp" ng-controller="mainMenuCtrl">
         <form id="loginForm" name="loginForm" method="post" action="">
   <fieldset>
     <legend>Enter information</legend>
     <p>
       <label for="username">Username</label>
       <br />
-      <input type="text" id="username" name="username" class="text" size="20" />
+      <input type="text" id="username" name="username" class="text" size="20" ng-model="name">
+      
     </p>
     <p>
       <label for="password">Password</label>
       <br />
-      <input type="password" id="password" name="password" class="text" size="20" />
+      <input type="password" id="username" name="password" class="text" size="20" ng-model="password">
     </p>
     <p>
-      <button type="submit" class="button positive">
+      <button type="submit" class="button positive" ng-click="login()">
        <img alt="ok" src=
        "http://www.blueprintcss.org/blueprint/plugins/buttons/icons/tick.png" /> 
        Login
@@ -43,5 +50,6 @@ and open the template in the editor.
     </p>
   </fieldset>
 </form>
-    </body>
+</div>
+</body>
 </html>
