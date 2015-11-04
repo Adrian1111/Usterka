@@ -5,33 +5,34 @@
  */
 
 'use strict';
-var app = angular.module('myApp', []);
-app.factory('CredentialService',['$rootScope', '$modal', 'authService', '$http', '$cookies','$q',
-        function ($rootScope, $modal, authService, $http, $cookies, $q) {
-        
 
+angular.module('myApp').factory('CredentialService',[ '$http', '$q',
+        function (  $http, $q) {
+            
         return {
-            login: function (username, password) {
-                var auth = { "username": username, "password": password };
-                //return $http.post("../Servlets/login", auth, { ignoreAuthModule: true }).success(function (auth) {
-                    $cookies.username = username;
-                    authService.loginConfirmed();
+            
+            //TO DO - przechowywanie cred. w cookies
+           // login: function (username, password) {
+           //     var auth = { "username": username, "password": password };
+            
+            //        $cookies.username = username;
+            //        authService.loginConfirmed();
                 //});
-            },
-            logout: function (username, password) {
-            						document.execCommand("ClearAuthenticationCache");
-                return $http.get("../Servlets/logout").success(function () {
-                    delete $cookies.username;
-                    authService.loginRequired();
-                    $(".main-menu").hide(); 
-                    $(".main-container").hide();
-                    $("#body").css("background-color","#FFFFCC");
-                });
-            },
-            getUsername: function(){
+           // },
+            //logout: function (username, password) {
+            //						document.execCommand("ClearAuthenticationCache");
+            //    return $http.get("../Servlets/logout").success(function () {
+            //        delete $cookies.username;
+            //        authService.loginRequired();
+            //        $(".main-menu").hide(); 
+            //        $(".main-container").hide();
+             //       $("#body").css("background-color","#FFFFCC");
+           //     });
+           // },
+            getUsernameAndPassword: function(){
             	
     			var deferred = $q.defer();
-    			$http.get('../Servlets/getlogin').success(function(result) {
+    			$http.get('Servlets/autentificationServlet').success(function(result) {
     				
     				deferred.resolve(result);
     				
@@ -39,7 +40,7 @@ app.factory('CredentialService',['$rootScope', '$modal', 'authService', '$http',
     			}).error(function(result) {
     				console.log(result);
     			});
-    			 
+    			
     			return deferred.promise;
     		}
             

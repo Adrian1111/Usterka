@@ -1,8 +1,19 @@
+'use strict';
 var app = angular.module('myApp', []);
-app.controller('mainMenuCtrl', function($scope) {
+app.controller('mainMenuCtrl', ['$scope', 'CredentialService', 
+    function($scope, CredentialService) {
     
-    $scope.login = function (){
-        alert("zalogowan")
-    } 
+        $scope.name;
+        $scope.password;
     
-});
+    	CredentialService.getUsernameAndPassword().then(function (res) {
+            $scope.list = res.ArrayList;
+            alert(res);
+        });
+
+        $scope.login = function () {
+           // if($scope.name)
+            alert("zalogowan");
+        };
+    
+}]);

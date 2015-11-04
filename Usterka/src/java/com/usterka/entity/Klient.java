@@ -5,9 +5,13 @@
  */
 package com.usterka.entity;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -146,7 +150,15 @@ public class Klient implements Serializable {
 
     @Override
     public String toString() {
-        return "com.usterka.entity.Klient[ id=" + id + " ]";
+        List<String> credentials = new ArrayList<>();
+
+        //credentials.add(fullName);
+        credentials.add(email);
+        credentials.add(userPassword);
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        String res = gson.toJson(credentials);
+        return res;
     }
     
 }
