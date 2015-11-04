@@ -7,13 +7,20 @@ app.controller('mainMenuCtrl', ['$scope', 'CredentialService',
         $scope.password;
     
     	CredentialService.getUsernameAndPassword().then(function (res) {
-            $scope.list = res.ArrayList;
-            alert(res);
+            $scope.list = res;
+            
         });
 
         $scope.login = function () {
-           // if($scope.name)
-            alert("zalogowan");
+           var i = 0;
+           while($scope.list[i]){
+            if( $scope.list[i][0] === $scope.name && $scope.list[i][1] === $scope.password){
+                alert("zalogowan");
+            }
+            
+            
+            i++;
+            }
         };
     
 }]);
